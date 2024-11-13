@@ -1,0 +1,95 @@
+import java.util.Scanner;
+
+class Aluno {
+    private String nome;
+    private String matricula;
+    private String sexo;
+    private String dataNascimento;
+    private String curso;
+    private int anoInicio;
+    private double notaProva1;
+    private double notaProva2;
+    private double mediaTrabalhos;
+
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
+    public String getMatricula() { return matricula; }
+    public void setMatricula(String matricula) { this.matricula = matricula; }
+
+    public String getSexo() { return sexo; }
+    public void setSexo(String sexo) { this.sexo = sexo; }
+
+    public String getDataNascimento() { return dataNascimento; }
+    public void setDataNascimento(String dataNascimento) { this.dataNascimento = dataNascimento; }
+
+    public String getCurso() { return curso; }
+    public void setCurso(String curso) { this.curso = curso; }
+
+    public int getAnoInicio() { return anoInicio; }
+    public void setAnoInicio(int anoInicio) { this.anoInicio = anoInicio; }
+
+    public double getNotaProva1() { return notaProva1; }
+    public void setNotaProva1(double notaProva1) { this.notaProva1 = notaProva1; }
+
+    public double getNotaProva2() { return notaProva2; }
+    public void setNotaProva2(double notaProva2) { this.notaProva2 = notaProva2; }
+
+    public double getMediaTrabalhos() { return mediaTrabalhos; }
+    public void setMediaTrabalhos(double mediaTrabalhos) { this.mediaTrabalhos = mediaTrabalhos; }
+
+    public boolean estaAprovado() {
+        double mediaFinal = (notaProva1 + notaProva2 + mediaTrabalhos) / 3;
+        return mediaFinal >= 6.0;
+    }
+
+    public double calcularMediaFinal() {
+        return (notaProva1 + notaProva2 + mediaTrabalhos) / 3;
+    }
+}
+public class TesteAluno {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Aluno aluno = new Aluno();
+
+        System.out.print("Informe o nome do aluno: ");
+        aluno.setNome(scanner.nextLine());
+
+        System.out.print("Informe a matrícula: ");
+        aluno.setMatricula(scanner.nextLine());
+
+        System.out.print("Informe o sexo: ");
+        aluno.setSexo(scanner.nextLine());
+
+        System.out.print("Informe a data de nascimento: ");
+        aluno.setDataNascimento(scanner.nextLine());
+
+        System.out.print("Informe o Curso: ");
+        aluno.setCurso(scanner.nextLine());
+
+        System.out.print("Informe o ano de início: ");
+        aluno.setAnoInicio(scanner.nextInt());
+
+        System.out.print("Informe a Nota da Prova 1: ");
+        aluno.setNotaProva1(scanner.nextDouble());
+
+        System.out.print("Informe a Nota da Prova 2: ");
+        aluno.setNotaProva2(scanner.nextDouble());
+
+        System.out.print("Informe a média dos Trabalhos: ");
+        aluno.setMediaTrabalhos(scanner.nextDouble());
+
+        double mediaFinal = aluno.calcularMediaFinal();
+        String situacao = aluno.estaAprovado() ? "Aprovado" : "Reprovado";
+
+        System.out.println("\n INFORMAÇÕES");
+        System.out.println("Nome: " + aluno.getNome());
+        System.out.println("Matrícula: " + aluno.getMatricula());
+        System.out.println("Nome do curso: " + aluno.getCurso());
+        System.out.printf("Situação: %s com média %.2f\n", situacao, mediaFinal);
+        System.out.println(">>> Fim da execução do software <<<");
+        scanner.close();
+    }
+}
+// Autor: Wilson Jose de Souza Neto
+// Turma: 102NB
